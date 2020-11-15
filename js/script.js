@@ -1,10 +1,64 @@
+const blockTypes = {
+    positive: {
+        color: 'green',
+        points: 100,
+    },
+    neutral: {
+        color: 'gray',
+        points: 0,
+    },
+    negative: {
+        color: 'red',
+        points: -100,
+    }
+};
+
+let score = 0;
 let box = document.querySelector('.box'),
-    wrapp = document.querySelector('.wrapper'),
-    fildBlock = document.querySelector('.fildGames'),
+    wrapper = document.querySelector('.wrapper'),
     btn = document.querySelector('.button19');
 
-function displeyBox () {
-    fildBlock.style.display = 'block';
+function displayBox () {
+    const w = wrapper.offsetWidth,
+        h = wrapper.offsetHeight,
+        dx = randomInteger(0, w - 100),
+        dy = randomInteger(0, h - 100),
+        index = randomInteger(0, Object.keys(blockTypes).length - 1),
+        type = getFieldByIndex(blockTypes, index);  
+    const box = makeBlock(dy, dx, type);
+    wrapper.append(box);
+
+}
+
+function getFieldByIndex(obj, index) {
+	let i = 0;
+	
+  for (const field in obj) {
+  	if (index === i) {
+    	return obj[field];
+    }
+  	
+    i++;
+  }
+}
+
+function makeBlock(dy, dx, type, size = 100) {
+    const box = document.createElement('div');
+    box.addEventListener('click', function() { 
+        score += type.points;
+        const scoreBlock = document.getElementById('score');
+        scoreBlock.innerHTML = score;
+        box.remove();
+        displayBox();
+    });
+    box.style.position = 'relative';
+    box.style.top = dy + 'px';
+    box.style.left = dx + 'px';
+    box.style.backgroundColor = type.color;
+    box.style.width = size + 'px';
+    box.style.height = size + 'px';
+    
+    return box;
 }
 
 function randomInteger(min, max) {
@@ -13,18 +67,7 @@ function randomInteger(min, max) {
     return rand;
 }
 
-function klickWrapp () {
-    let w = wrapp.offsetWidth,
-        h = wrapp.offsetHeight,
-        dx = randomInteger(0, w - 100),
-        dy = randomInteger(0, h - 100);
-    box.style.position = 'relative';
-    box.style.display = 'block';
-    box.style.top = dy + 'px';
-    box.style.left = dx + 'px';
-}
-btn.addEventListener('click', displeyBox);
-box.addEventListener('click', klickWrapp);
+btn.addEventListener('click', displayBox);
 
 
 
