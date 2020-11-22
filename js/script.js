@@ -56,7 +56,7 @@ function makeBlock(dy, dx, type, size = 100) {
     box.style.left = dx + 'px';
     box.style.backgroundColor = type.color;
     box.style.width = size + 'px';
-    box.style.height = size + 'px';
+    box.style.height = size + 'px';   
     
     return box;
 }
@@ -67,7 +67,16 @@ function randomInteger(min, max) {
     return rand;
 }
 
-btn.addEventListener('click', displayBox);
+btn.addEventListener('click', function() {
+    displayBox();
+});
 
-
-
+document.querySelectorAll('button').forEach(function(el) {
+    el.addEventListener('click',function(){
+    if(!this.dataset.secondname)
+      return;
+     let tmp = this.innerHTML;
+     this.innerHTML = this.dataset.secondname;
+     this.dataset.secondname = tmp;
+}, false)
+})
