@@ -1,5 +1,6 @@
 
 stopTimer = document.querySelector('.button1');
+
 function timerStart () {
         let display = document.querySelector('#countdown .display') // меняющаяся цифра
         let timeLeft = parseInt(display.innerHTML) // оставшееся время
@@ -16,10 +17,33 @@ function timerStart () {
 
         stopTimer.addEventListener('click', function() {
             clearTimeout(timer);
-            // alert('You click pause');
+            openWin();
         })
 }
+
 btn.addEventListener('click', timerStart);
 
 
+let modal = document.querySelector('.modal');
+let overflow = document.createElement('div');
 
+function openWin() {
+    overflow.className = "overflow";
+    document.body.appendChild(overflow);
+    let height = modal.offsetHeight;
+    modal.style.marginTop = - height / 2 + "px";
+    modal.style.top = "50%";
+}
+
+if (!Element.prototype.remove) {
+    Element.prototype.remove = function remove() {
+        if (this.parentNode) {
+            this.parentNode.removeChild(this);
+        }
+    };
+}
+
+overflow.addEventListener('click', function () {
+    modal.style.top = "-100%";
+    overflow.remove();
+})

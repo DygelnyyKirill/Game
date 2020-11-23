@@ -19,10 +19,10 @@ let box = document.querySelector('.box'),
     btn = document.querySelector('.button19');
 
 function displayBox () {
-    const w = wrapper.offsetWidth,
-        h = wrapper.offsetHeight,
-        dx = randomInteger(0, w - 100),
+    const h = wrapper.offsetHeight,
+        w = wrapper.offsetWidth,
         dy = randomInteger(0, h - 100),
+        dx = randomInteger(0, w - 100),
         index = randomInteger(0, Object.keys(blockTypes).length - 1),
         type = getFieldByIndex(blockTypes, index);  
     const box = makeBlock(dy, dx, type);
@@ -67,16 +67,15 @@ function randomInteger(min, max) {
     return rand;
 }
 
-btn.addEventListener('click', function() {
-    displayBox();
-});
+btn.addEventListener('click', displayBox);
 
-document.querySelectorAll('button').forEach(function(el) {
-    el.addEventListener('click',function(){
-    if(!this.dataset.secondname)
-      return;
-     let tmp = this.innerHTML;
-     this.innerHTML = this.dataset.secondname;
-     this.dataset.secondname = tmp;
-}, false)
-})
+// document.querySelectorAll('button').forEach(function(el) {
+//     el.addEventListener('click',function(){
+//     if(!this.dataset.secondname)
+//       return;
+//      let tmp = this.innerHTML;
+//      this.innerHTML = this.dataset.secondname;
+//      this.dataset.secondname = tmp;
+// }, false)
+// })
+
