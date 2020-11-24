@@ -27,7 +27,6 @@ function displayBox () {
         type = getFieldByIndex(blockTypes, index);  
     const box = makeBlock(dy, dx, type);
     wrapper.append(box);
-
 }
 
 function getFieldByIndex(obj, index) {
@@ -36,8 +35,7 @@ function getFieldByIndex(obj, index) {
   for (const field in obj) {
   	if (index === i) {
     	return obj[field];
-    }
-  	
+    } 	
     i++;
   }
 }
@@ -47,6 +45,8 @@ function makeBlock(dy, dx, type, size = 100) {
     box.addEventListener('click', function() { 
         score += type.points;
         const scoreBlock = document.getElementById('score');
+        const scoreResult = document.getElementById('result');
+        scoreResult.innerHTML = score;
         scoreBlock.innerHTML = score;
         box.remove();
         displayBox();
@@ -68,6 +68,9 @@ function randomInteger(min, max) {
 }
 
 btn.addEventListener('click', displayBox);
+
+continueGame = document.querySelector('input[type="button"]');
+
 
 // document.querySelectorAll('button').forEach(function(el) {
 //     el.addEventListener('click',function(){
