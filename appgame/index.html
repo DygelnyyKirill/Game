@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="./style/style.css">    
+    <link rel="stylesheet" href="./style/modal.css">    
+</head>
+<body>
+    <div class="count">
+        <div id="countdown">
+            <h1>You have  <span class="display">10</span> seconds left</h1>
+            <div>Your score: <span id="score">0</span></div>
+        </div>
+    </div>
+        
+    <div class="wrapper">
+        <div class="fieldGames" style="display: none;"> -->
+        </div>
+    </div>
+
+    <div class="btn">
+        <!-- <button class="button19" value="" pButton type="button" data-secondname="STOP">START</button> -->
+        <button class="button19">START</button>
+        <button class="button1">PAUSE</button>
+    </div>
+
+    <div class="modal">
+       <h1>PAUSE</h1>
+       <form>
+            <input type="submit" value="Replya">
+            <input type="button" value="Continue">
+        </form>
+    </div>
+
+    <div class="modal-score">
+        <h2>YOUR SCORE = <span id="result">0</span></h2>
+        <form>
+            <input type="text" placeholder="Your neme?">
+            <input type="submit" value="Send">
+        </form>
+     </div>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/timer.js"></script>
+  
+
+</body>
+</html>
